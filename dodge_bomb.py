@@ -23,6 +23,8 @@ def check_bound(rct:pg.Rect)->tuple[bool,bool]:
         tate=False
     return yoko ,tate#結果を返す
 tmr=0
+
+
 def display_update():
     """
     ゲームオーバー画面を表示する
