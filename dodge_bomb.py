@@ -49,6 +49,8 @@ def display_update():
 def yakitori(sum_mv):
     a=yakitori.get(tuple(sum_mv)) 
     return
+
+
 bb_imgs=[]
 bb_accs=[a for a in range (1,11)]
 def init_bb_imgs() -> tuple[list[pg.Surface], list[int]]:
