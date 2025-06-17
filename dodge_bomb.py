@@ -1,6 +1,7 @@
 import os
 import random
 import sys
+import time
 import pygame as pg
 
 
@@ -21,7 +22,26 @@ def check_bound(rct:pg.Rect)->tuple[bool,bool]:
     if rct.top <0 or HEIGHT<rct.bottom:
         tate=False
     return yoko ,tate#結果を返す
-
+tmr=0
+def display_update():
+    screen = pg.display.set_mode((WIDTH, HEIGHT))
+    go_img=pg.image.load("fig/8.png")
+    fonto=pg.font.Font(None,80)
+    txt=fonto.render("Game Over",True,(255,255,255))
+    a_img=pg.Surface((WIDTH,HEIGHT))#空のsurfaceを作る
+    bg_img = pg.image.load("fig/pg_bg.jpg")
+    screen.blit(bg_img, [-tmr, 0])
+    screen.set_alpha(50)
+    pg.draw.rect(a_img, (0, 0, 0), (0, 0,WIDTH,HEIGHT))#空surfaceに四角形を描画する
+    a_img.set_alpha(50)
+    screen.blit(a_img,[0,0])
+    screen.blit(go_img,[100,100])
+    screen.blit(go_img,[300,100])
+    screen.blit(txt,[550,325])
+    pg.display.update()
+    time.sleep(5)
+ 
+    print("ぬん")
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
@@ -44,6 +64,8 @@ def main():
             if event.type == pg.QUIT: 
                 return
         if kk_rct.colliderect(bb_rct):
+            display_update()
+            time.sleep(2)
             print("ゲームオーバー")
             return
         screen.blit(bg_img, [0, 0]) 
