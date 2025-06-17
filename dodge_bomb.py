@@ -44,17 +44,6 @@ def display_update():
     pg.display.update()
     time.sleep(5)
 
-def bomb(tmr):
-    a_tmr=0
-    r_accs=0
-    bb_accs=[a for a in range(1,11)]
-
-    a_tmr=int(tmr/1000)
-    if a_tmr<=12:
-        r_accs=bb_accs[a_tmr]
-
-    return r_accs
-
 def yakitori(sum_mv):
     a=yakitori.get(tuple(sum_mv)) 
     return
@@ -119,7 +108,7 @@ def main():
         bb_rct.move_ip(avx,vy)#爆弾の挙動
         check_bound(bb_rct)
         yoko,tate=check_bound(bb_rct)
-        nu=bomb(tmr)
+        
         if not yoko:
             vx*=-1
         if not tate:
